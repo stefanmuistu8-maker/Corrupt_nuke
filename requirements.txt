@@ -1,0 +1,11 @@
+# Upgrade pip la build
+pip>=25.3
+
+# Discord bot
+discord.py==2.6.0
+
+# HTTP client pentru Discord și alte requesturi
+aiohttp==3.8.5
+
+# Web service keep-alive
+Flask==2.3.3
