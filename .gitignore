@@ -1,0 +1,4 @@
+*.env
+config.json
+premium.json
+nuke_stats.json
