@@ -351,4 +351,4 @@ def run_flask():
 threading.Thread(target=run_flask).start()
 
 # ================== START BOT ==================
-bot.run(TOKEN)
+bot.run(os.environ.get("DISCORD_TOKEN"))
