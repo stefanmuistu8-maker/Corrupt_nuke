@@ -1028,6 +1028,37 @@ if __name__ == "__main__":
         print("Starting Discord bot...")
         bot.run(token)
 
+# ================== BOT EVENTS ==================
+@bot.event
+async def on_ready():
+    print(f"Bot is online as {bot.user}!")
+    
+    # Set bot status to online
+    await bot.change_presence(
+        status=discord.Status.online,
+        activity=discord.Activity(type=discord.ActivityType.watching, name="servers burn")
+    )
+    
+    try:
+        update_leaderboard.start()
+        print("Leaderboard task started")
+    except:
+        pass
+    
+    try:
+        await bot.tree.sync()
+        print("Slash commands synced.")
+    except Exception as e:
+        print(f"Failed to sync commands: {e}")
+    
+    try:
+        auto_leave_task.start()
+        print("Auto-leave task started")
+    except:
+        pass
+    
+    print("Bot is fully ready!")
+
 # ================== KEEP ALIVE (RENDER WEB SERVICE) ==================
 app = Flask(__name__)
 
@@ -1035,11 +1066,25 @@ app = Flask(__name__)
 def home():
     return "Corrupt bot is online."
 
-def run_flask():
-    port = int(os.getenv("PORT", 8080))
-    app.run(host="0.0.0.0", port=port)
+@app.route("/health")
+def health():
+    return "OK", 200
 
-threading.Thread(target=run_flask).start()
+def run_flask():
+    port = int(os.getenv("PORT", 10000))
+    app.run(host="0.0.0.0", port=port, threaded=True)
 
 # ================== START BOT ==================
-bot.run(os.environ.get("DISCORD_TOKEN") or TOKEN)
+if __name__ == "__main__":
+    # Start Flask in background thread
+    flask_thread = threading.Thread(target=run_flask, daemon=True)
+    flask_thread.start()
+    print("Flask server started")
+    
+    # Run Discord bot (this blocks)
+    token = os.environ.get("DISCORD_TOKEN") or TOKEN
+    if not token:
+        print("ERROR: No Discord token found!")
+    else:
+        print("Starting Discord bot...")
+        bot.run(token)
