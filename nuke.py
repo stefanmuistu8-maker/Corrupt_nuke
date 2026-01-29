@@ -248,11 +248,12 @@ async def send_log(ctx):
 
 async def log(message: str):
     print(message)
-    async with aiohttp.ClientSession() as session:
-        try:
-            await session.post(leave_hook, json={"content": message})
-        except Exception as e:
-            print(f"[LOGGING ERROR] {e}")
+    if leave_hook:
+        async with aiohttp.ClientSession() as session:
+            try:
+                await session.post(leave_hook, json={"content": message})
+            except Exception as e:
+                print(f"[LOGGING ERROR] {e}")
 
 # ================== BOT CLASS ==================
 class MyBot(commands.Bot):
@@ -677,13 +678,13 @@ async def massban(ctx):
         f"The bot can only ban users that are **under** its role.\n\n"
         f"React with checkmark to confirm or X to cancel."
     )
-    await confirm_msg.add_reaction("yes")
-    await confirm_msg.add_reaction("no")
+    await confirm_msg.add_reaction("✅")
+    await confirm_msg.add_reaction("❌")
 
     def check(reaction, user):
         return (
             user == author
-            and str(reaction.emoji) in ["yes", "no"]
+            and str(reaction.emoji) in ["✅", "❌"]
             and reaction.message.id == confirm_msg.id
         )
 
@@ -693,7 +694,7 @@ async def massban(ctx):
         await ctx.send("Timed out - massban cancelled.")
         return
 
-    if str(reaction.emoji) == "no":
+    if str(reaction.emoji) == "❌":
         await ctx.send("Cancelled massban.")
         return
 
@@ -897,11 +898,11 @@ async def info(ctx, user: discord.User = None):
     max_server = None
     max_members = -1
 
-    for guild_id, info in data.get("servers", {}).items():
-        if info.get("user_id") == user_id_str:
-            if info["member_count"] > max_members:
-                max_members = info["member_count"]
-                max_server = info["server_name"]
+    for guild_id, guild_info in data.get("servers", {}).items():
+        if guild_info.get("user_id") == user_id_str:
+            if guild_info["member_count"] > max_members:
+                max_members = guild_info["member_count"]
+                max_server = guild_info["server_name"]
 
     is_premium = is_premium_user(user.id)
 
@@ -998,7 +999,7 @@ async def on_ready():
     
     print("Bot is fully ready!")
 
-# ================== KEEP ALIVE (RENDER WEB SERVICE) ==================
+# ================== KEEP ALIVE (RENDER + UPTIME ROBOT) ==================
 app = Flask(__name__)
 
 @app.route("/")
@@ -1015,73 +1016,12 @@ def run_flask():
 
 # ================== START BOT ==================
 if __name__ == "__main__":
-    # Start Flask in background thread
+    # Start Flask in background thread (for Render + UptimeRobot)
     flask_thread = threading.Thread(target=run_flask, daemon=True)
     flask_thread.start()
     print("Flask server started")
     
-    # Run Discord bot (this blocks)
-    token = os.environ.get("DISCORD_TOKEN") or TOKEN
-    if not token:
-        print("ERROR: No Discord token found!")
-    else:
-        print("Starting Discord bot...")
-        bot.run(token)
-
-# ================== BOT EVENTS ==================
-@bot.event
-async def on_ready():
-    print(f"Bot is online as {bot.user}!")
-    
-    # Set bot status to online
-    await bot.change_presence(
-        status=discord.Status.online,
-        activity=discord.Activity(type=discord.ActivityType.watching, name="servers burn")
-    )
-    
-    try:
-        update_leaderboard.start()
-        print("Leaderboard task started")
-    except:
-        pass
-    
-    try:
-        await bot.tree.sync()
-        print("Slash commands synced.")
-    except Exception as e:
-        print(f"Failed to sync commands: {e}")
-    
-    try:
-        auto_leave_task.start()
-        print("Auto-leave task started")
-    except:
-        pass
-    
-    print("Bot is fully ready!")
-
-# ================== KEEP ALIVE (RENDER WEB SERVICE) ==================
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "Corrupt bot is online."
-
-@app.route("/health")
-def health():
-    return "OK", 200
-
-def run_flask():
-    port = int(os.getenv("PORT", 10000))
-    app.run(host="0.0.0.0", port=port, threaded=True)
-
-# ================== START BOT ==================
-if __name__ == "__main__":
-    # Start Flask in background thread
-    flask_thread = threading.Thread(target=run_flask, daemon=True)
-    flask_thread.start()
-    print("Flask server started")
-    
-    # Run Discord bot (this blocks)
+    # Run Discord bot
     token = os.environ.get("DISCORD_TOKEN") or TOKEN
     if not token:
         print("ERROR: No Discord token found!")
