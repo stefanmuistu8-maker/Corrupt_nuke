@@ -35,36 +35,45 @@ BLOCKED_BOT_NAMES = ["Security", "Wick", "Beemo", "AntiNuke"]
 
 # ================== CHANNEL NAMES RANDOMIZER ==================
 CHANNEL_NAMES = [
-    "━━━1weeksober━━━",
+    "╔══1weeksober══╗",
     "╔══get-nuked══╗",
-    "★ezwin-lol★",
-    "◆corrupt-owns◆",
-    "▓▓nuked-mfs▓▓",
-    "░1week-on-top░",
-    "╠═ez-noobs═╣",
-    "▀▄get-rekt▄▀",
-    "◢◤corrupt◢◤",
-    "【owned-lmao】",
-    "〖nuked-ez〗",
-    "『1weeksober』",
-    "《get-trolled》",
-    "〔ez-clap〕",
-    "║corrupt-wins║",
-    "┃rip-server┃",
-    "╳╳nuked╳╳",
-    "◇◆owned◆◇",
-    "▶1week-top◀",
-    "●○ez-dub○●"
+    "╔══ezwin-lol══╗",
+    "╔══corrupt-owns══╗",
+    "╔══nuked-mfs══╗",
+    "╔══1week-on-top══╗",
+    "╔══ez-noobs══╗",
+    "╔══get-rekt══╗",
+    "╔══corrupt══╗",
+    "╔══owned-lmao══╗",
+    "╔══nuked-ez══╗",
+    "╔══1weeksober══╗",
+    "╔══get-trolled══╗",
+    "╔══ez-clap══╗",
+    "╔══corrupt-wins══╗",
+    "╔══rip-server══╗",
+    "╔══nuked══╗",
+    "╔══owned══╗",
+    "╔══1week-top══╗",
+    "╔══ez-dub══╗",
+    "╔══server-finished══╗",
+    "╔══rest-in-pieces══╗",
+    "╔══clowned══╗",
+    "╔══ez-owned══╗",
+    "╔══deleted══╗",
+    "╔══corrupt-was-here══╗",
+    "╔══skill-issue══╗",
+    "╔══too-easy══╗",
+    "╔══pack-watched══╗",
+    "╔══gg-no-re══╗"
 ]
 
 # ================== TROLL IMAGES ==================
 TROLL_IMAGES = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9DLFntKCx8kKGnMsGWlhAzvfHNChW8fT__jTpphgOlQ&s=10",
-    "https://pbs.twimg.com/media/B-mdLIgXAAAujrZ.jpg",
-    "https://cdn77-pic.xvideos-cdn.com/videos/thumbs169ll/da/4d/07/da4d077bd5a64f29b1270a01a8cf5f2f/da4d077bd5a64f29b1270a01a8cf5f2f.28.jpg",
-    "https://i.pinimg.com/564x/c3/fe/8a/c3fe8a0d6bcbcdeeb4d310e4f5e598e4.jpg",
-    "https://i.guim.co.uk/img/media/775e8cb61ce6adc0c20352a1f4d57cee6312f259/133_43_631_379/master/631.jpg?width=1200&quality=85&auto=format&fit=max&s=740229b11857a59a5924820a10ae40b8",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoWuPjDtwizqRiCb3Jwmohg6DmmcSpJ6Pok4xo6ahj_A&s=10"
+    "https://shithd.com/uploads/posts/2019-02/1551016987_3661_shithd_com.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDCuszcyPEKi9tPbVraRglSo4EPKMcWC1zTW5zZL_wYw&s=10",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj6JQeZiTHMlZLIk5Gis7OL9blhjkgEr19dQVJb-SPZQ&s=10",
+    "https://pornjav.org/uploads/posts/2019-02/1551016653_3391_pornjav_org.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ9GDnUUB9Qb1HrCdoCl6Nzkvl0L35U_zh_KasAbeQ_Q&s=10"
 ]
 
 # ================== HELPER FUNCTIONS ==================
