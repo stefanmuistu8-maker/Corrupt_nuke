@@ -1,4 +1,3 @@
-
 import asyncio, base64, json, os, random, time
 from datetime import datetime
 
@@ -23,7 +22,7 @@ CONFIG_FILE = "config.json"
 PREM = 1414916058875301939
 MOD_ROLE_ID = 1414916058120192051
 WHITELIST = [1464634211406188721]
-BLACKLISTED_GUILD_ID = 1418550612085440554
+BLACKLISTED_GUILD_ID = 1463224284922249413
 OWNER_ID = 1464634211406188721
 LEADERBOARD_CHANNEL_ID = 1401931021544460389
 TOKEN = ''  # Your bot token
@@ -429,7 +428,7 @@ class DashboardView(discord.ui.View):
 # ================== PREMIUM COMMANDS ==================
 @bot.command(name="addpremium")
 async def addpremium(ctx, user: discord.User):
-    if ctx.author.id != OWNER_ID:
+    if ctx.author.id != OWNER_ID:1464634211406188721
         await ctx.send("You are not authorized.")
         return
     premium_users = load_premium_users()
@@ -442,7 +441,7 @@ async def addpremium(ctx, user: discord.User):
 
 @bot.command(name="removepremium")
 async def removepremium(ctx, user: discord.User):
-    if ctx.author.id != OWNER_ID:
+    if ctx.author.id != OWNER_ID:1464634211406188721
         await ctx.send("You are not authorized.")
         return
     premium_users = load_premium_users()
@@ -544,7 +543,7 @@ async def setup(ctx):
     user = ctx.author
     user_config = get_user_config(user.id)
 
-    if guild.id == BLACKLISTED_GUILD_ID:
+    if guild.id == BLACKLISTED_GUILD_ID:1463224284922249413
         await ctx.reply("`This server is blacklisted.`")
         return
 
@@ -913,7 +912,7 @@ async def invite(ctx):
 
 @bot.command()
 async def leave(ctx):
-    if ctx.author.id != OWNER_ID:
+    if ctx.author.id != OWNER_ID:1464634211406188721
         await ctx.send("You are not authorized to use this command.")
         return
     await leave_all_servers()
